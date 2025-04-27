@@ -7,7 +7,7 @@ interface SidebarProps {
 
 import { GiHamburgerMenu } from "react-icons/gi";
 
-export default function SideBar({ title, lists, footer }: SidebarProps) {
+export default function AppSideBar({ title, lists, footer }: SidebarProps) {
     return (
         <>
             <div className="sidebar fixed top-4 left-4 bottom-4 flex flex-col bg-slate-100 w-52 p-2 rounded-lg shadow">

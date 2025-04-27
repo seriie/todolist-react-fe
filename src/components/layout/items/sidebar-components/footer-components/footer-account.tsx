@@ -1,5 +1,5 @@
 import { FaChevronDown } from "react-icons/fa";
-import { useInitials } from "../../../hooks/use-initials";
+import { useInitials } from "../../../../hooks/use-initials";
 
 interface AccountProps {
   name: string;

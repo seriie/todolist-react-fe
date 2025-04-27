@@ -12,7 +12,7 @@ interface TabsProps {
 }
 
 export default function TabRoute({ title, items, onItemClick }: TabsProps) {
-  const [activeTabs, setActiveTabs] = useState<number | null>(null);
+  const [activeTabs, setActiveTabs] = useState<number>(1);
 
   const handleClick = (item: Item) => {
     setActiveTabs(item.id);
@@ -27,10 +27,10 @@ export default function TabRoute({ title, items, onItemClick }: TabsProps) {
           <div
             key={item.id}
             onClick={() => handleClick(item)}
-            className={`cursor-pointer p-3 rounded-md border ${
+            className={`transition-all duration-200 cursor-pointer py-1 px-4 rounded-md border ${
               activeTabs === item.id
-                ? "bg-indigo-100 border-indigo-500"
-                : "bg-white"
+                ? "bg-slate-800 text-slate-100 shadow-md"
+                : "bg-white hover:bg-slate-100"
             }`}
           >
             {item.name}
