@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Route } from "react-router-dom";
 import TabRoute from "./tab-route";
 import TaskToday from "./tab-list/task-today";
 
@@ -9,10 +8,10 @@ export default function Tabs() {
     const navigate = useNavigate();
 
     const items = [
-        { id: 1, name: "All", path: "/task" },
-        { id: 2, name: "Today", path: "/task/today" },
-        { id: 3, name: "Next Week", path: "/task/next-week" },
-        { id: 4, name: "Next Month", path: "/task/next-month" },
+        { id: 1, name: "All" },
+        { id: 2, name: "Today" },
+        { id: 3, name: "Next Week" },
+        { id: 4, name: "Next Month" },
     ];
 
     const handleItemClick = (item: { id: number; name: string; path: string }) => {

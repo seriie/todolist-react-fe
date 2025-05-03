@@ -3,6 +3,7 @@ import { FaRegCalendarAlt, FaTasks } from "react-icons/fa";
 import { FaNoteSticky } from "react-icons/fa6";
 import AppSideBar from "./layout/app/app-sidebar";
 import Lists from "./layout/items/sidebar-components/sidebar-lists";
+import Footer from "./layout/items/sidebar-components/sidebar-footer";
 
 export default function Sidebar() {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function Sidebar() {
 
     return (
         <>
-            <AppSideBar title="menu" lists={<Lists title="Task" items={items} onItemClick={handleTabChange}/>} footer="" />
+            <AppSideBar title="menu" lists={<Lists title="Task" items={items} onItemClick={handleTabChange}/>} footer={<Footer />} />
         </>
     )
 }
