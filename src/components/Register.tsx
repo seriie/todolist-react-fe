@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AppRegister from "./layout/app/auth/app-register";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -9,6 +10,7 @@ export default function Register() {
   const [error, setError] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
   const URL = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -39,6 +41,9 @@ export default function Register() {
       });
       
       console.log(response);
+      if(response.status === 201) {
+        navigate('/auth/login');
+      }
     } catch (e: any) {
       const msg = e.response?.data?.message || "Failed to register!";
       setError(msg);

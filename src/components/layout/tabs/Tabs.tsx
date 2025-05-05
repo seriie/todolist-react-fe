@@ -23,7 +23,7 @@ export default function Tabs() {
 
     return (
         <>
-            <div className="ml-60 mt-10">
+            <div className="ml-64 mt-10">
                 <TabRoute title="Task Tabs" items={items} onItemClick={handleItemClick} />
                 {tabs === 1 && <TaskToday />}
                 {tabs === 2 && "2"}

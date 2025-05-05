@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./context/IsLoggedIn";
+import { useProfile } from "./context/Profile";
 import AppLogin from "./layout/app/auth/app-login";
 import axios from "axios";
 
@@ -8,6 +11,9 @@ export default function Login() {
   const [error, setError] = useState("");
   const [isLogingIn, setIsLogingIn] = useState(false);
   const URL = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useAuth();
+  const { fetchUserProfile } = useProfile();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -27,7 +33,12 @@ export default function Login() {
         password: password
       });
 
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user_id', response.data.userId);
       console.log(response);
+      setIsLoggedIn(true);
+      await fetchUserProfile();
+      navigate('/');
     } catch (e: any) {
       const msg = e.response?.data?.message || "Login Failed!";
       setError(msg);
